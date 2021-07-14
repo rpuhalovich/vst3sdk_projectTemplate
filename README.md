@@ -16,7 +16,7 @@ It also has the incredibly annoying SMTG_CREATE_PLUGIN_LINK variable set to OFF.
 
 ### Dependencies
 
-Cmake: ```https://cmake.org/``` and Visual Studio/Xcode depending on platform (only Windows and Mac are supported).
+Cmake: ```https://cmake.org/``` and Visual Studio/Xcode depending on platform (only Windows and MacOS are supported).
 
 ### Setup
 
