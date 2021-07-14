@@ -5,10 +5,11 @@
 This is a repository that contains all my preferred changes when creating a new VST3_SDK project.
 
 It features:
-- A cleaned up Cmake script that's easy to modify for a new project.
+- A cleaned up CMake script that's easy to modify for a new project.
 - Will Pirkle's fxobjects.h, fxobjects.cpp and filters.h files (http://www.aspikplugins.com/) as a library.
 - My own Filter and Biquad object files for a simple usage example.
 - Scripts for downloading the VST3_SDK for an in-source project, and building the vst3projectgenerator projects such that it is easy to compile and create the customized source files with a GUI interface.
+- A Reaper project file with a sample song for testing any audio plugins on.
 
 It also has the incredibly annoying SMTG_CREATE_PLUGIN_LINK variable set to OFF.
 
@@ -16,7 +17,7 @@ It also has the incredibly annoying SMTG_CREATE_PLUGIN_LINK variable set to OFF.
 
 ### Dependencies
 
-Cmake: ```https://cmake.org/``` and Visual Studio/Xcode depending on platform (only Windows and MacOS are supported).
+CMake: ```https://cmake.org/``` and Visual Studio/Xcode depending on platform (only Windows and MacOS are supported).
 
 ### Setup
 
@@ -27,3 +28,9 @@ Use either ```setup.bat``` or ```setup.sh``` to download the required dependenci
 Fill out the fields in the GUI application and set the ```Output Directory:``` to be ```extern/vst3projectgenerator/``` (or anywhere else really, but I recommended here so as to be a part of the .gitignore). Finally, copy the contents of ```extern/vst3projectgenerator/(YOUR PLUGIN NAME)/source/``` to ```source/```. 
 
 Run ```build_visual_studio.bat```/```build_xcode.sh``` and have fun coding a VST plugin!
+
+## Notes
+
+I'm using ```file(GLOB_RECURSE ...)``` for the simplicity of a gathering source files into a variable. Therefore, every time a source file is added, run the ```build_visual_studio.bat```/```build_xcode.sh``` scripts to refresh the project files (yes, I'm aware that the CMake documentation advises against this but hush, this is more for single developer projects).
+
+The Reaper project file must be added as an argument manually in Visual Studio/Xcode with the startup application obviously being set to Reaper. Most likley the sample song won't be found when the project is as the absolute paths would be different but it is located in host_projects/.
