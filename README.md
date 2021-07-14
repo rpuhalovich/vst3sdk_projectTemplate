@@ -24,6 +24,6 @@ Clone using: ```git clone https://github.com/rpuhalovich/vst3sdk_projectTemplate
 
 Use either ```setup.bat``` or ```setup.sh``` to download the required dependencies and build the Visual Studio/Xcode projects. Then open the ```vst3_project_generator_distribution.sln```/```vst3_project_generator_distribution.xcodeproj``` file found in ```extern/vst3projectgenerator/build/``` and run the ```vst3projectgenerator``` target.
 
-Fill out the fields in the GUI application and set the ```Output Directory:``` to be ```extern/vst3projectgenerator/``` (or anywhere else really, but I recommended here so as to be a part of the .gitignore). Finally, copy the contents of ```extern/vst3projectgenerator/(YOUR PLUGIN NAME)/``` to ```source/```. 
+Fill out the fields in the GUI application and set the ```Output Directory:``` to be ```extern/vst3projectgenerator/``` (or anywhere else really, but I recommended here so as to be a part of the .gitignore). Finally, copy the contents of ```extern/vst3projectgenerator/(YOUR PLUGIN NAME)/source/``` to ```source/```. 
 
-Have fun coding a VST plugin!
+Run ```build_visual_studio.bat```/```build_xcode.sh``` and have fun coding a VST plugin!
