@@ -1,0 +1,6 @@
+build/
+extern/VST3_SDK/
+extern/vst3projectgenerator/
+.vscode/
+
+.DS_Store
