@@ -2,7 +2,13 @@
 
 ## Introduction
 
-This is a repository that contains all my preferred changes when creating a new VST3_SDK project. It features a cleaned up Cmake script that's easy to modify for a new project, inclusion of Will Pirkle's fxobjects.h, fxobjects.cpp and filters.h files (http://www.aspikplugins.com/) as a library and scripts for building the vst3projectgenerator projects such that it is easy to compile and create the customized source files with a GUI interface.
+This is a repository that contains all my preferred changes when creating a new VST3_SDK project.
+
+It features:
+- A cleaned up Cmake script that's easy to modify for a new project.
+- Will Pirkle's fxobjects.h, fxobjects.cpp and filters.h files (http://www.aspikplugins.com/) as a library.
+- My own Filter and Biquad object files for a simple usage example.
+- Scripts for building the vst3projectgenerator projects such that it is easy to compile and create the customized source files with a GUI interface.
 
 It also has the incredibly annoying SMTG_CREATE_PLUGIN_LINK variable set to OFF.
 
