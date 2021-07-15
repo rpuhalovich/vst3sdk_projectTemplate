@@ -11,11 +11,7 @@ set_property(GLOBAL PROPERTY PREDEFINED_TARGETS_FOLDER Predefined)
 set(RESOURCE_DIR resource)
 set(EXTERN_DIR extern)
 set(SRC_DIR source)
-
 set(vst3sdk_SOURCE_DIR ${EXTERN_DIR}/VST3_SDK)
-# if(NOT EXISTS "${EXTERN_DIR}/VST3_SDK")
-#     message(FATAL_ERROR "Path to VST3_SDK is empty! Use scripts/setup.bat or scripts/setup.sh!")
-# endif()
 
 file(GLOB_RECURSE src FILE ${SRC_DIR}/*.cpp ${SRC_DIR}/*.hpp ${SRC_DIR}/*.h)
 

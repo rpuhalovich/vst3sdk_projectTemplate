@@ -1,4 +1,4 @@
-cd ${dirname $0}
+cd "$(dirname "$0")"
 
 # --- EDIT -------------------------------------------------------------------------------------------------------------
 
@@ -16,6 +16,9 @@ PLUGIN_BUNDLENAME="example_pluginb_bundle"
 
 EXTERN_DIR=../extern
 VST3PROJGEN_DIR=${EXTERN_DIR}/vst3projectgenerator
+
+SOURCE_DIR=../source
+RESOURCE_DIR=../resource
 
 git clone --recursive https://github.com/steinbergmedia/vst3sdk.git ${EXTERN_DIR}/VST3_SDK
 git clone --recursive https://github.com/steinbergmedia/vst3projectgenerator.git ${VST3PROJGEN_DIR}
@@ -53,3 +56,19 @@ cmake\
 mkdir -p ${VST3PROJGEN_DIR}/generated_files/
 mv ${VST3PROJGEN_DIR}/script/output/"${PLUGIN_NAME}" ${VST3PROJGEN_DIR}/generated_files/"${PLUGIN_NAME}"
 rm -rf ${VST3PROJGEN_DIR}/script/output/
+
+read -n1 -p "Copy files to resource/ and scripts/ (WILL DELETE SOURCE FILES (rm source/*) BEFORE COPY)? [y,n]" doit 
+echo ""
+case $doit in
+  y|Y)
+    rm -f ${SOURCE_DIR}/*
+    cp -f ${VST3PROJGEN_DIR}/generated_files/"${PLUGIN_NAME}"/source/* ${SOURCE_DIR}/
+    cp -f ${VST3PROJGEN_DIR}/generated_files/"${PLUGIN_NAME}"/resource/"${PREFIX_FOR_FILENAMES}editor.uidesc" ${RESOURCE_DIR}/
+    cp -f ${VST3PROJGEN_DIR}/generated_files/"${PLUGIN_NAME}"/resource/"info.plist" ${RESOURCE_DIR}/
+    cp -f ${VST3PROJGEN_DIR}/generated_files/"${PLUGIN_NAME}"/resource/"win32resource.rc" ${RESOURCE_DIR}/
+  ;;
+esac
+
+echo ""
+echo "Be sure to remove any previous/unwanted .uidesc files in resource/"
+echo "Happy coding!"
