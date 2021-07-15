@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.14.0)
 
-project(vst3sdk_projectTemplate CXX C)
+set(project_name "example")
+set(file_prefix "ex_")
+
+project(${project_name} CXX C)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_C_STANDARD 99)
 
@@ -15,7 +18,7 @@ set(vst3sdk_SOURCE_DIR ${EXTERN_DIR}/VST3_SDK)
 
 file(GLOB_RECURSE src FILE ${SRC_DIR}/*.cpp ${SRC_DIR}/*.hpp ${SRC_DIR}/*.h)
 
-set(src_resources "${RESOURCE_DIR}/myplugineditor.uidesc" "${RESOURCE_DIR}/win32resource.rc")
+set(src_resources "${RESOURCE_DIR}/${file_prefix}editor.uidesc" "${RESOURCE_DIR}/win32resource.rc")
 source_group(resource FILES "${vst3sdk_SOURCE_DIR}/public.sdk/source/main/dllmain.cpp")
 source_group(TREE ${CMAKE_SOURCE_DIR} FILES ${src} ${src_resources})
 
