@@ -25,7 +25,7 @@ Clone using: ```git clone https://github.com/rpuhalovich/vst3sdk_projectTemplate
 
 Edit ```scripts/setup.sh``` to contain the desired plugin information, then run it.
 
-Run ```build_visual_studio.bat```/```build_xcode.sh``` and have fun coding a VST plugin!
+Edit the CMakeLists.txt script to contain the preferred project name. Then run ```build_visual_studio.bat```/```build_xcode.sh``` and have fun coding a VST plugin!
 
 ## Notes
 
