@@ -1,24 +1,24 @@
-cd $(dirname $0)
+cd ${dirname $0}
 
 # --- EDIT -------------------------------------------------------------------------------------------------------------
 
-# See below for example usage.
-VENDOR_NAME="rpuhalovich"
-VENDOR_URL="github.com/rpuhalovich"
-VENDOR_EMAIL="reanpuhalovich@gmail.com"
-PLUGIN_NAME="VReverb"
-PLUGIN_IDENTIFIER="com.rpuhalovich.vreverb"
-PLUGIN_CLASSNAME="CVreverb"
+VENDOR_NAME="example_vendor"
+VENDOR_URL="github.com/example_vendor_github"
+VENDOR_EMAIL="example_vendor@gmail.com"
+PLUGIN_NAME="example_plugin"
+PREFIX_FOR_FILENAMES="ex_"
+PLUGIN_IDENTIFIER="com.example_vendor.example_plugin"
+PLUGIN_CLASSNAME="Cexample_plugin"
 PLUGIN_CATEGORY="Reverb"
-PLUGIN_BUNDLENAME="vreverbbundle"
+PLUGIN_BUNDLENAME="example_pluginb_bundle"
 
 # --- DO NOT EDIT ------------------------------------------------------------------------------------------------------
 
 EXTERN_DIR=../extern
-VST3PROJGEN_DIR=$(EXTERN_DIR)/vst3projectgenerator
+VST3PROJGEN_DIR=${EXTERN_DIR}/vst3projectgenerator
 
-git clone --recursive https://github.com/steinbergmedia/vst3sdk.git $(EXTERN_DIR)/VST3_SDK
-git clone --recursive https://github.com/steinbergmedia/vst3projectgenerator.git $(VST3PROJGEN_DIR)
+git clone --recursive https://github.com/steinbergmedia/vst3sdk.git ${EXTERN_DIR}/VST3_SDK
+git clone --recursive https://github.com/steinbergmedia/vst3projectgenerator.git ${VST3PROJGEN_DIR}
 
 # cmake\
 # -DSMTG_VENDOR_NAME_CLI="Test Company"\
@@ -32,20 +32,24 @@ git clone --recursive https://github.com/steinbergmedia/vst3projectgenerator.git
 # -DSMTG_PLUGIN_CLASS_NAME_CLI="CTestPlugin"\
 # -DSMTG_PLUGIN_CATEGORY_CLI="TestCategory"\
 # -DSMTG_PLUGIN_BUNDLE_NAME_CLI="testpluginbundle"\
-# -P GenerateVST3Plugin.cmake
+# -P ../extern/vst3projectgenerator/script/GenerateVST3Plugin.cmake
+
+rm -rf ${VST3PROJGEN_DIR}/"${PLUGIN_NAME}"
 
 cmake\
- -DSMTG_VENDOR_NAME_CLI=$(VENDOR_NAME)\
- -DSMTG_VENDOR_HOMEPAGE_CLI=$(VENDOR_URL)\
- -DSMTG_VENDOR_EMAIL_CLI=$(VENDOR_EMAIL)\
- -DSMTG_PLUGIN_NAME_CLI=$(PLUGIN_NAME)\
- -DSMTG_CMAKE_PROJECT_NAME_CLI=$(PLUGIN_NAME)\
- -DSMTG_PLUGIN_IDENTIFIER_CLI=$(PLUGIN_IDENTIFIER)\
- -DSMTG_VENDOR_NAMESPACE_CLI=$(VENDOR_NAME)\
- -DSMTG_PLUGIN_CLASS_NAME_CLI=$(PLUGIN_CLASSNAME)\
- -DSMTG_PLUGIN_CATEGORY_CLI=$(PLUGIN_CATEGORY)\
- -DSMTG_PLUGIN_BUNDLE_NAME_CLI=$(PLUGIN_BUNDLENAME)\
- -P $(VST3PROJGEN_DIR)/script/GenerateVST3Plugin.cmake
+ -DSMTG_VENDOR_NAME_CLI=${VENDOR_NAME}\
+ -DSMTG_VENDOR_HOMEPAGE_CLI=${VENDOR_URL}\
+ -DSMTG_VENDOR_EMAIL_CLI=${VENDOR_EMAIL}\
+ -DSMTG_PLUGIN_NAME_CLI=${PLUGIN_NAME}\
+ -DSMTG_PREFIX_FOR_FILENAMES_CLI=${PREFIX_FOR_FILENAMES}\
+ -DSMTG_CMAKE_PROJECT_NAME_CLI=${PLUGIN_NAME}\
+ -DSMTG_PLUGIN_IDENTIFIER_CLI=${PLUGIN_IDENTIFIER}\
+ -DSMTG_VENDOR_NAMESPACE_CLI=${VENDOR_NAME}\
+ -DSMTG_PLUGIN_CLASS_NAME_CLI=${PLUGIN_CLASSNAME}\
+ -DSMTG_PLUGIN_CATEGORY_CLI=${PLUGIN_CATEGORY}\
+ -DSMTG_PLUGIN_BUNDLE_NAME_CLI=${PLUGIN_BUNDLENAME}\
+ -P ${VST3PROJGEN_DIR}/script/GenerateVST3Plugin.cmake
 
-mv $(VST3PROJGEN_DIR)/script/output/"$(VENDOR_NAME)" $(VST3PROJGEN_DIR)/"$(VENDOR_NAME)"
-rm -rf $(VST3PROJGEN_DIR)/script/output/
+mkdir -p ${VST3PROJGEN_DIR}/generated_files/
+mv ${VST3PROJGEN_DIR}/script/output/"${PLUGIN_NAME}" ${VST3PROJGEN_DIR}/generated_files/"${PLUGIN_NAME}"
+rm -rf ${VST3PROJGEN_DIR}/script/output/
