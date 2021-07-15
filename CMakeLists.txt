@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14.0)
 
-project(VReverb CXX C)
+project(vst3sdk_projectTemplate CXX C)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_C_STANDARD 99)
 
