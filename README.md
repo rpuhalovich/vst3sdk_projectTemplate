@@ -21,9 +21,11 @@ CMake (https://cmake.org/) and Visual Studio/Xcode depending on platform (only W
 
 ### Setup
 
-Edit ```scripts/setup.sh``` to contain the desired plugin information, then run it.
+Run ```scripts\download_sdk.bat```/```scripts/download_sdk.sh``` to download the VST3_SDK.
 
-Edit the CMakeLists.txt script to contain the preferred project name and file prefix. Then run ```build_visual_studio.bat```/```build_xcode.sh``` and have fun coding a VST plugin!
+Run ```scripts/setup.sh```/```scripts\setup.bat```. Fill out the GUI application with the desired plugin information. Build the project files as a Ninja project (or any other non-IDE build target) and save it into ```extern/vst3projectgenerator``` (to have it in the .gitignore). Then copy the ```resource/``` and ```source/``` folders in the generated output to the root directory. Finally remove the two generated ```<hashcode>_snapshot.png``` images in ```resource/```.
+
+Edit the CMakeLists.txt script to contain the project name and file prefix. Then run ```build_visual_studio.bat```/```build_xcode.sh``` and have fun coding a VST plugin!
 
 ## Notes
 
