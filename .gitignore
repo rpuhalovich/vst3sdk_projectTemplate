@@ -1,6 +1,7 @@
-build/
+.vscode/
 extern/VST3_SDK/
 extern/vst3projectgenerator/
-.vscode/
+build/
+sourcegen/
 
 .DS_Store
